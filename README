@@ -1,8 +1,31 @@
 = Gettext Localize
 
-Authors:: Ramon SalvadÃ³ <rsalvado@gnuine.com>, Miquel Ibero <mibero@gnuine.com>
+Authors:: Ramon Salvadó <rsalvado@gnuine.com>, Miquel Ibero <mibero@gnuine.com>
 
-Localizes your rails app using Gettext. Needs to have the gettext gem installed (gem install gettext).
+RubyForge Project Page: rubyforge.org/projects/rateableplugin/gettextlocalize
+
+Any questions/comments can be addressed to Ramon Salvadó <rsalvado@gnuine.com>
+
+This plugin is intended to help you localize your rails app using Gettext, it doesn't try to cover localization of models. It should work with Rails 1.1.6 and has been tested with the following languages: catalan, spanish, english. 
+
+
+== Installation
+
+Needs to have the gettext gem installed:
+
+sudo gem install gettext
+
+To install the plugin:
+
+script/plugin install svn://rubyforge.org/var/svn/gettextlocalize/trunk/plugin
+
+You can checkout a demo app (uses postgresql):
+
+svn co svn://rubyforge.org/var/svn/gettextlocalize/trunk/demo_app
+
+We recommend the unicode_hacks plugin:
+
+http://julik.textdriven.com/svn/tools/rails_plugins/unicode_hacks/
 
 == Features
 
@@ -139,3 +162,8 @@ To set the currency depending on the country:
 
 To set the connector depending on the locale:
 - <tt>Array::to_sentence</tt>
+
+== Acknowledgments:
+Jester for Localization simplified plugin from which we borrowed some code/concepts.
+Masao Mutoh for ruby-gettext.
+
