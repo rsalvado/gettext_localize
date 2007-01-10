@@ -1,0 +1,336 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gettext_localize 1.0.0\n"
+"POT-Creation-Date: 2007-01-08 13:29+0100\n"
+"PO-Revision-Date: 2007-01-08 13:21+0100\n"
+"Last-Translator: Miguel Ibero <mibero@gnuine.com>\n"
+"Language-Team: Gnuine <info@gnuine.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"X-Poedit-Language: Catalan\n"
+"X-Poedit-Country: SPAIN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:6
+msgid "Sun"
+msgstr "Dg"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:6
+msgid "Mon"
+msgstr "Dl"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:6
+msgid "Tue"
+msgstr "Dt"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:6
+msgid "Wed"
+msgstr "Dc"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:6
+msgid "Thu"
+msgstr "Dj"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:6
+msgid "Fri"
+msgstr "Dv"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:6
+msgid "Sat"
+msgstr "Ds"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:12
+msgid "Sunday"
+msgstr "Diumenge"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:12
+msgid "Monday"
+msgstr "Dilluns"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:12
+msgid "Tuesday"
+msgstr "Dimarts"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:12
+msgid "Wednesday"
+msgstr "Dimecres"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:12
+msgid "Thursday"
+msgstr "Dijous"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:12
+msgid "Friday"
+msgstr "Divendres"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:12
+msgid "Saturday"
+msgstr "Dissabte"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:18
+msgid "Jan"
+msgstr "Gen"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:18
+msgid "Feb"
+msgstr "Feb"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:18
+msgid "Mar"
+msgstr "Mar"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:18
+msgid "Apr"
+msgstr "Abr"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:18
+msgid "Abbr|May"
+msgstr "Mai"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:18
+msgid "Jun"
+msgstr "Jun"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:19
+msgid "Jul"
+msgstr "Jul"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:19
+msgid "Aug"
+msgstr "Ago"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:19
+msgid "Sep"
+msgstr "Set"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:19
+msgid "Oct"
+msgstr "Oct"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:19
+msgid "Nov"
+msgstr "Nov"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:19
+msgid "Dec"
+msgstr "Des"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:25
+msgid "January"
+msgstr "Gener"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:25
+msgid "February"
+msgstr "Febrer"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:25
+msgid "March"
+msgstr "Març"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:25
+msgid "April"
+msgstr "Abril"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:25
+msgid "May"
+msgstr "Maig"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:25
+msgid "June"
+msgstr "Juny"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:26
+msgid "July"
+msgstr "Juliol"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:26
+msgid "August"
+msgstr "Agost"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:26
+msgid "September"
+msgstr "Setembre"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:26
+msgid "October"
+msgstr "Octubre"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:26
+msgid "November"
+msgstr "Novembre"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:26
+msgid "December"
+msgstr "Desembre"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:35
+msgid "%s of January"
+msgstr "%s de Gener"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:35
+msgid "%s of February"
+msgstr "%s de Febrer"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:35
+msgid "%s of March"
+msgstr "%s de Març"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:35
+msgid "%s of April"
+msgstr "%s d'Abril"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:35
+msgid "%s of May"
+msgstr "%s de Maig"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:35
+msgid "%s of June"
+msgstr "%s de Juny"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:36
+msgid "%s of July"
+msgstr "%s de Juliol"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:36
+msgid "%s of August"
+msgstr "%s d'Agost"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:36
+msgid "%s of September"
+msgstr "%s de Setembre"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:36
+msgid "%s of October"
+msgstr "%s d'Octubre"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:36
+msgid "%s of November"
+msgstr "%s de Novembre"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:36
+msgid "%s of December"
+msgstr "%s de Desembre"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:40
+msgid "and"
+msgstr "i"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:119
+msgid "date|default|%Y-%m-%d"
+msgstr "%d-%m-%Y"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:120
+msgid "date|short|%e %b"
+msgstr "%e %b"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:121
+msgid "date|long|%B %e, %Y"
+msgstr "%V, %Y"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:139
+msgid "time|default|%a %b %d %H:%M:%S %Z %Y"
+msgstr "%a %d %b %H:%M:%S %Z %Y"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:140
+msgid "time|short|%d %b %H:%M"
+msgstr "%d %b %H:%M"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:141
+msgid "time|long|%B %d, %Y %H:%M"
+msgstr "%v, %Y %H:%M"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:158
+msgid "datetime|default|%a %b %d %H:%M:%S %Y"
+msgstr "%a %d %b %H:%M:%S %Y"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:159
+msgid "datetime|short|%e %b"
+msgstr "%e %b"
+
+#: /home/mibero/workspace/rblog/vendor/plugins/gettext_localize/lib/gettext_localize_extend.rb:160
+msgid "datetime|long|%B %e, %Y"
+msgstr "%V, %Y"
+
+# FIXME: temporal rails translations
+#~ msgid "%{num} error prohibited this %{record} from being saved"
+#~ msgid_plural "%{num} errors prohibited this %{record} from being saved"
+#~ msgstr[0] "%{num} error impedeix que es pugui guardar %{record}"
+#~ msgstr[1] "%{num} errors impedeixen que es pugui guardar %{record}"
+
+#~ msgid "There was a problem with the following field:"
+#~ msgid_plural "There were problems with the following fields:"
+#~ msgstr[0] "Hi ha problemes amb el següent camp:"
+#~ msgstr[1] "Hi ha problemes amb els següents camps:"
+
+#~ msgid "less than 5 seconds"
+#~ msgstr "menys de 5 segons"
+
+#~ msgid "less than 10 seconds"
+#~ msgstr "menys de 10 segons"
+
+#~ msgid "less than 20 seconds"
+#~ msgstr "menys de 20 segons"
+
+#~ msgid "half a minute"
+#~ msgstr "mig minut"
+
+#~ msgid "less than a minute"
+#~ msgstr "menys d'un minut"
+
+#~ msgid "1 minute"
+#~ msgid_plural "%{num} minutes"
+#~ msgstr[0] "1 minut"
+#~ msgstr[1] "%{num} minuts"
+
+#~ msgid "about 1 hour"
+#~ msgid_plural "about %{num} hours"
+#~ msgstr[0] "al voltant d'1 hora"
+#~ msgstr[1] "al voltant de %{num} hores"
+
+#~ msgid "1 day"
+#~ msgid_plural "%{num} days"
+#~ msgstr[0] "1 dia"
+#~ msgstr[1] "%{num} dies"
+
+#~ msgid "%{fn} is not included in the list"
+#~ msgstr "%{fn} no pertany a la llista de possibles valors"
+
+#~ msgid "%{fn} is reserved"
+#~ msgstr "%{fn} no està permès"
+
+#~ msgid "%{fn} is invalid"
+#~ msgstr "%{fn} no és vàlid"
+
+#~ msgid "%{fn} doesn't match confirmation"
+#~ msgstr "%{fn} no té el mateix valor que la confirmació"
+
+#~ msgid "%{fn} must be accepted"
+#~ msgstr "%{fn} ha de ser acceptat"
+
+#~ msgid "%{fn} can't be empty"
+#~ msgstr "%{fn} no pot ser buit"
+
+#~ msgid "%{fn} can't be blank"
+#~ msgstr "%{fn} no pot estar en blanc"
+
+#~ msgid "%{fn} is too long (maximum is %d characters)"
+#~ msgstr "%{fn} és massa llarg (màxim de %d caràcters)"
+
+#~ msgid "%{fn} is too short (minimum is %d characters)"
+#~ msgstr "%{fn} és massa curt (mínim de %d caràcters)"
+
+#~ msgid "%{fn} is the wrong length (should be %d characters)"
+#~ msgstr "%{fn} té una llargària incorrecta (hauria de tenir %d caràcters)"
+
+#~ msgid "%{fn} has already been taken"
+#~ msgstr "%{fn} ja existent"
+
+#~ msgid "%{fn} is not a number"
+#~ msgstr "%{fn} no és un número"

@@ -1,0 +1,27 @@
+es: &europe
+  currency:
+    unit: €
+    separator: ","
+    delimiter: "."
+    order:
+    - number
+    - unit
+  date_select_order:
+    order:
+    - day
+    - month
+    - year
+us:
+  currency:
+    unit: $
+    separator: "."
+    delimiter: ","
+    order:
+    - unit
+    - number
+  date_select_order:
+    order:
+    - year
+    - month
+    - day
+fr: << *europe
