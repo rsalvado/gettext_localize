@@ -30,6 +30,12 @@ module GettextLocalize
       end
     end
 
+    # sets locale unless nil or empty
+    def set_locale_if(locale=nil)
+      locale = locale.respond_to?(:to_s) ? locale.to_s : ""
+      set_default_locale locale unless locale.strip.empty?
+    end
+
     # binds default textdomain in every controller
     # can be overriden by calling bindtextdomain
     def bind_default_textdomain(textdomain=nil)
@@ -92,7 +98,7 @@ module GettextLocalize
     def set_locale_by_header(name='lang')
       name = 'HTTP_ACCEPT_LANGUAGE'
       GettextLocalize::set_locale(nil)
-      locales = self.get_locales_from_hash(@request.env,name)
+      locales = self.get_locales_from_hash(request.env,name)
       return unless locales
       locales.each do |locale|
         if GettextLocalize.has_locale?(locale)
@@ -223,8 +229,11 @@ module ActionView
       # countries.yml file.
       def date_select(object_name, method, options = {})
         country_options = GettextLocalize::country_options
+        country_options[:date_select_order][:order][0] = country_options[:date_select_order][:order][0].to_sym
+        country_options[:date_select_order][:order][1] = country_options[:date_select_order][:order][1].to_sym
+        country_options[:date_select_order][:order][2] = country_options[:date_select_order][:order][2].to_sym
         options.reverse_merge!(country_options[:date_select_order])
-        orig_date_select(object_name, method, options)
+        orig_date_select(object_name, method, options)  #:order => [:day,:month,:year])# options)
       end
 
       alias_method :orig_select_date, :select_date
@@ -246,7 +255,9 @@ module ActionView
       # countries.yml file.
       def datetime_select(object_name, method, options = {})
         country_options = GettextLocalize::country_options
-        options.reverse_merge!(country_options[:date_select_order])
+        if country_options[:date_select_order].respond_to? :merge
+          options.reverse_merge!(country_options[:date_select_order])
+        end
         orig_datetime_select(object_name, method, options)
       end
 

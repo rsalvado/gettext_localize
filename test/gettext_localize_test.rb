@@ -80,7 +80,7 @@ class GettextLocalizeTest < Test::Unit::TestCase
       end
     end
     # let's see how date and time work...
-    assert_equal "01-12-2006", Date.new(2006,12,1).to_s
+    assert_equal "01-12-2006", Date.new(2006,12,1).strftime("%d-%m-%Y")
     assert_equal "01-12-2006", Time.mktime(2006,12,1).strftime("%d-%m-%Y")
   end
 
@@ -103,6 +103,14 @@ class GettextLocalizeTest < Test::Unit::TestCase
     expect = Pathname.new(File.join(RAILS_ROOT,'locale')).realpath.to_s
     assert_equal expect, GettextLocalize.send(:get_locale_path,'.')
     assert GettextLocalize.send(:get_locale_path,'/lopu').nil?
+  end
+
+  def test_should_show_available_locales
+    all = GettextLocalize.all_locales
+    supported = GettextLocalize.supported_locales
+    [:en,:es,:es_ES,:ca].each do |lc|
+      assert_equal supported[lc],all[lc]
+    end
   end
 
 end

@@ -6,23 +6,24 @@ require 'jcode'
 
 # require gettext for ruby
 begin
-  # put this require in your environment.rb
-  # uncomment it here if you don't mind a warning
-  # require 'gettext/rails' unless ActionController::Base.respond_to?(:init_gettext)
+  # requires correct gettext version if Rails 1.2
+  if Rails::VERSION::MAJOR >= 1 and Rails::VERSION::MINOR >=2
+    require_gem 'gettext', '~> 1.9.0'
+  else
+    require_gem 'gettext', '<= 1.8.0'
+  end
   require 'gettext/rails'
   require 'gettext/utils'
 rescue
   raise StandardError.new("gettext could not be loaded: #{$!}")
 end
 
-
 # global methods
 # all in the GettextLocalize module
 require 'gettext_localize'
 
-# Fixme: Setting a Date to a datetime activerecord
-# tries to save localized to_s
-
+# locale used in the literals to be translated
+GettextLocalize::original_locale = 'en'
 # locale in case everything else fails
 GettextLocalize::fallback_locale = 'ca'
 # country if everything else fails

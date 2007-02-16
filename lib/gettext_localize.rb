@@ -33,6 +33,7 @@ module GettextLocalize
   @@fallback_country = nil
 
   @@locale = nil
+  @@original_locale = nil
   @@default_locale = nil
   @@fallback_locale = nil
 
@@ -64,6 +65,13 @@ module GettextLocalize
   # if not defined uses $LANG environment variable
   def self.default_locale=(lc)
     self.set_default_locale(lc)
+  end
+
+  # sets the original locale, the one
+  # used in literals inside the _()
+  # by default is english
+  def self.original_locale=(lc)
+    self.set_original_locale(lc)
   end
 
   # defines fallback locale in case nothing else
@@ -101,6 +109,8 @@ module GettextLocalize
     self.get_app_version
   end
 
+  # returns app_name with version
+  # concadenated in a string
   def self.app_name_version
     a = []
     a << self.get_app_name if self.get_app_name
@@ -204,7 +214,19 @@ module GettextLocalize
     end
   end
 
-  # sets country options specified on countries.yml file.
+  # adds a default locale path
+  def self.add_default_locale_path(dir=nil)
+    version = GetText::VERSION.to_s.split(".").map{|v| v.to_i }
+    # if gettext 1.9.0 or greater
+    if version[0] >= 1 and version[1] >= 9
+      path = self.get_locale_path_with_vars(dir)
+    else
+      path = self.get_locale_path(dir)
+    end
+    GetText::add_default_locale_path(path) if path
+  end
+
+  # sets country options specified in the <code>countries.yml</code> file.
   def self.set_country_options(country=nil)
     begin
       country = self.get_country if country.nil?
@@ -246,23 +268,46 @@ module GettextLocalize
   # gettext localization yielding the variables
   # version, name and plugin directory
   def self.each_plugin
-    Dir.glob(File.join(self.get_plugins_base_dir,"*")).each do |f|
+    Dir.glob(File.join(self.get_plugins_base_dir,"*")).each do |file|
       begin
-        po_dir = Pathname.new(File.join(f,"po")).realpath.to_s
+        po_dir = Pathname.new(File.join(file,"po")).realpath.to_s
       rescue
         next
       end
       if File.directory?(po_dir) and File.writable?(po_dir)
-        if defined?(@@plugins) and @@plugins[f]
-          yield @@plugins[f][:version], @@plugins[f][:name], f
+        if defined?(@@plugins) and @@plugins[file]
+          version = @@plugins[file][:version]
+          name = @@plugins[file][:name]
         else
-          yield "1.0.0",File.basename(f),f
+          version = "1.0.0",
+          name = File.basename(file)
         end
+        yield version, name, file
       end
     end
   end
 
+  # returns a hash with the supported locales
+  # in the aplication as keys and the localized
+  # names of the locales as values
+  def self.supported_locales
+    locale_dir = File.join(RAILS_ROOT,"locale","**")
+    locales = Dir.glob(locale_dir).select { |file| File.directory? file }.collect { |dir| File.basename(dir) }
+    locales.collect!{|l| self.format_locale l }
+    locales.each{|l| locales << l[0..1] if l.length > 2 }
+    locales << @@original_locale
+    self.all_locales.delete_if{|k,v| !locales.include? k.to_s }
+  end
+
   private
+
+  # returns all locale names, each in it's own language
+  # please check the file <code>locales.yml</code> and add your own
+  def self.all_locales
+    locales_yml_file = Pathname.new(File.join(self.get_plugin_dir(),"locales.yml")).realpath.to_s
+    locales = YAML::load(File.open(locales_yml_file))
+    self.string_to_sym(locales)
+  end
 
   # formats a given string locale in the style of
   # gettext folders es-es => es_ES
@@ -319,11 +364,25 @@ module GettextLocalize
     end
   end
 
+  # returns a valid locale path
+  # with variables for %{locale} and %{name}
+  # currently <code>get_locale_path()/%{locale}/LC_MESSAGES/%{name}.mo</code>
+  def self.get_locale_path_with_vars(path=nil)
+    path = self.get_locale_path(path)
+    File.join(path,"%{locale}","LC_MESSAGES","%{name}.mo") if path
+  end
+
   # sets the default locale
   def self.set_default_locale(lc)
     lc = self.format_locale(lc)
     @@default_locale = lc
     GetText::set_locale(lc)
+  end
+
+  # sets the original locale
+  def self.set_original_locale(lc)
+    lc = self.format_locale(lc)
+    @@original_locale = lc
   end
 
   # sets the fallback locale

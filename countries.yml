@@ -1,4 +1,4 @@
-es: &europe
+europe: &europe
   currency:
     unit: €
     separator: ","
@@ -6,6 +6,23 @@ es: &europe
     order:
     - number
     - unit
+  date_select_order:
+    order:
+    - day
+    - month
+    - year
+es: *europe
+fr: *europe
+de: *europe
+it: *europe
+uk:
+  currency:
+    unit: £
+    separator: "."
+    delimiter: ","
+    order:
+    - unit
+    - number
   date_select_order:
     order:
     - day
@@ -24,4 +41,3 @@ us:
     - year
     - month
     - day
-fr: << *europe
