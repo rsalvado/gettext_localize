@@ -140,6 +140,13 @@ module GettextLocalize
   def self.country_options
     self.get_country_options
   end
+  
+  # Returns an Array ready to be merged in datetime select options
+  # :order => [:day, :month, :year]
+  def self.date_order
+    country_options[:date_select_order][:order].collect! { |element| element.to_sym }
+    country_options[:date_select_order]
+  end
 
   # sets the country
   def self.set_country(country)

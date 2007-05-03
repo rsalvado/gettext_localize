@@ -228,11 +228,7 @@ module ActionView
       # modify date_select to insert date order specified on
       # countries.yml file.
       def date_select(object_name, method, options = {})
-        country_options = GettextLocalize::country_options
-        country_options[:date_select_order][:order][0] = country_options[:date_select_order][:order][0].to_sym
-        country_options[:date_select_order][:order][1] = country_options[:date_select_order][:order][1].to_sym
-        country_options[:date_select_order][:order][2] = country_options[:date_select_order][:order][2].to_sym
-        options.reverse_merge!(country_options[:date_select_order])
+        options.reverse_merge!(GettextLocalize::date_order)
         orig_date_select(object_name, method, options)  #:order => [:day,:month,:year])# options)
       end
 
@@ -241,12 +237,8 @@ module ActionView
       # modify select_date to apply order specified on
       # countries.yml file.
       def select_date(date = Date.today, options = {})
-        country_options = GettextLocalize::country_options
-        selects = []
-        selects[country_options[:date_select_order][:order].index("day")] = select_day(date, options)
-        selects[country_options[:date_select_order][:order].index("month")] = select_month(date, options)
-        selects[country_options[:date_select_order][:order].index("year")] = select_year(date, options)
-        selects[0] + selects[1] + selects[2]
+        options.reverse_merge!(GettextLocalize::date_order)
+        orig_select_date(date, options)
       end
 
       alias_method :orig_datetime_select, :datetime_select
@@ -254,9 +246,8 @@ module ActionView
       # modify datetime_select to insert date order specified on
       # countries.yml file.
       def datetime_select(object_name, method, options = {})
-        country_options = GettextLocalize::country_options
-        if country_options[:date_select_order].respond_to? :merge
-          options.reverse_merge!(country_options[:date_select_order])
+        if GettextLocalize::date_order.respond_to? :merge
+          options.reverse_merge!(GettextLocalize::date_order)
         end
         orig_datetime_select(object_name, method, options)
       end
@@ -266,45 +257,10 @@ module ActionView
       # modify select_datetime to apply order specified on
       # countries.yml file.
       def select_datetime(datetime = Time.now, options = {})
-        country_options = GettextLocalize::country_options
-        selects = []
-        selects[country_options[:date_select_order][:order].index("day")] = select_day(datetime, options)
-        selects[country_options[:date_select_order][:order].index("month")] = select_month(datetime, options)
-        selects[country_options[:date_select_order][:order].index("year")] = select_year(datetime, options)
-        selects[0] + selects[1] + selects[2] + select_hour(datetime, options) + select_minute(datetime, options)
+        options.reverse_merge!(GettextLocalize::date_order)
+        orig_select_datetime(datetime, options)
       end
 
-    end
-
-    class InstanceTag
-      alias_method :orig_to_datetime_select_tag , :to_datetime_select_tag
-
-      # modify datetime_select to accept option :order (default is [:year, :month, :day] )
-      # This method is used in datetime_select calls
-      def to_datetime_select_tag(options = {})
-        defaults = { :discard_type => true }
-        options  = defaults.merge(options)
-        options_with_prefix = Proc.new { |position| options.merge(:prefix => "#{@object_name}[#{@method_name}(#{position}i)]") }
-        datetime = options[:include_blank] ? (value || nil) : (value || Time.now)
-        datetime_select = ''
-        options[:order] ||= [:year, :month, :day]
-
-        position = {:year => 1, :month => 2, :day => 3}
-
-        discard = {}
-        discard[:year]  = true if options[:discard_year]
-        discard[:month] = true if options[:discard_month]
-        discard[:day]   = true if options[:discard_day] or options[:discard_month]
-
-        options[:order].each do |param|
-          param = param.to_sym if param.respond_to?(:to_sym)
-          datetime_select << self.send("select_#{param}", datetime, options_with_prefix.call(position[param])) unless discard[param]
-        end
-        datetime_select << " &mdash; " + select_hour(datetime, options_with_prefix.call(4)) unless options[:discard_hour]
-        datetime_select << " : "       + select_minute(datetime, options_with_prefix.call(5)) unless options[:discard_minute] || options[:discard_hour]
-
-        datetime_select
-      end
     end
 
     # NumberHelper extensions
