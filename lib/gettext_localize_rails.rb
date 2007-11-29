@@ -228,7 +228,7 @@ module ActionView
       # modify date_select to insert date order specified on
       # countries.yml file.
       def date_select(object_name, method, options = {})
-        options.reverse_merge!(GettextLocalize::date_order)
+        options.reverse_merge!(GettextLocalize::date_order) unless options.include? :order
         orig_date_select(object_name, method, options)  #:order => [:day,:month,:year])# options)
       end
 
@@ -237,7 +237,7 @@ module ActionView
       # modify select_date to apply order specified on
       # countries.yml file.
       def select_date(date = Date.today, options = {})
-        options.reverse_merge!(GettextLocalize::date_order)
+        options.reverse_merge!(GettextLocalize::date_order) unless options.include? :order
         orig_select_date(date, options)
       end
 
@@ -247,7 +247,7 @@ module ActionView
       # countries.yml file.
       def datetime_select(object_name, method, options = {})
         if GettextLocalize::date_order.respond_to? :merge
-          options.reverse_merge!(GettextLocalize::date_order)
+          options.reverse_merge!(GettextLocalize::date_order) unless options.include? :order
         end
         orig_datetime_select(object_name, method, options)
       end
@@ -257,10 +257,19 @@ module ActionView
       # modify select_datetime to apply order specified on
       # countries.yml file.
       def select_datetime(datetime = Time.now, options = {})
-        options.reverse_merge!(GettextLocalize::date_order)
+        options.reverse_merge!(GettextLocalize::date_order) unless options.include? :order
         orig_select_datetime(datetime, options)
       end
 
+    end
+    
+    class InstanceTag
+      alias_method :orig_to_datetime_select_tag , :to_datetime_select_tag
+    
+      def to_datetime_select_tag(options = {})
+        options.reverse_merge!(GettextLocalize::date_order) unless options.include? :order
+        orig_to_datetime_select_tag(options)
+      end
     end
 
     # NumberHelper extensions

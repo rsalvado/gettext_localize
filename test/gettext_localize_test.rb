@@ -108,7 +108,7 @@ class GettextLocalizeTest < Test::Unit::TestCase
   def test_should_show_available_locales
     all = GettextLocalize.all_locales
     supported = GettextLocalize.supported_locales
-    [:en,:es,:es_ES,:ca].each do |lc|
+    supported.each do |lc|
       assert_equal supported[lc],all[lc]
     end
   end
