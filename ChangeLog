@@ -1,6 +1,7 @@
 Version 0.4 28/11/2007
 ----
 		- Included french translation (thanks to Michel Loiseleur)
+		- Included german translation (thanks to Stephan Seyboth)
 		- Relaxed gettext gem requirements to include 1.10
 		- Fixed bug to make it work with ruby 1.8.6 (thanks to Luis E. Guardiola)
 
