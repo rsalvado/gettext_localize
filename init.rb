@@ -1,3 +1,5 @@
+
+
 # Ruby unicode support
 $KCODE = 'u'
 require 'jcode'

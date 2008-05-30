@@ -201,6 +201,7 @@ module GettextLocalize
       mos << File.join(path,locale,"LC_MESSAGES",textdomain+".mo")
       mos << File.join(path,locale.split("_")[0],"LC_MESSAGES",textdomain+".mo")
     end
+    mos.uniq!
     mos.each do |mo|
       return true if File.file?(mo) and File.readable?(mo)
     end
@@ -265,10 +266,15 @@ module GettextLocalize
   # sets the plugin textdomain and forces the creation
   # of a RAILS_ROOT/vendor/plugins/$plugin/po/$textdomain.pot
   # when executing rake gettext:plugins:updatepo
-  def self.plugin_bindtextdomain(name=nil,version="1.0.0")
-    name = self.get_plugin_dir_name if name.nil?
+  def self.plugin_bindtextdomain(name=nil, version="1.0.0")
+    if name.nil?
+      name = self.get_plugin_dir_name if name.nil?
+      path = self.get_plugin_locale_path if path.nil?
+    else
+      path = File.join(RAILS_ROOT, "vendor", "plugins", name, "locale")
+    end
     self.add_plugin(name,version)
-    GetText::bindtextdomain(name, :path => self.get_plugin_locale_path)
+    GetText::bindtextdomain(name, :path => path)
   end
 
   # iterates over every application plugin that has

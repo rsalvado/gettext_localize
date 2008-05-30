@@ -1,10 +1,17 @@
+Version 0.4.4 30/05/2008
+----
+		- Added rpdf extension to the list of extensiosn files be parsed
+		- Fixed small typo in spanish translation (thanks to Arnau Sanchez and Guillem de Castro)
+		- Fixed memory leak (Jordi Beltran)
+		- Fixed small bug in the plugin localization system
+
 Version 0.4.3 14/12/2007
 ----
 		- Small fix for Rails 2.0
 
 Version 0.4.2 13/12/2007
 ----
-		- Updated gettext gem requirements
+		- Updated gem requirements
 
 Version 0.4.1 04/12/2007
 ----

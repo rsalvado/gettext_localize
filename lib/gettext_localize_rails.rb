@@ -23,7 +23,7 @@ module GettextLocalize
     # loads default locale in every controller
     # can be overriden by calling set_locale
     def set_default_locale(locale=nil)
-      locale = GettextLocalize::locale if (locale.nil? || locale == 'en-us') # FIXME Hack for Rails 2.0
+      locale = GettextLocalize::locale if ( locale.nil? || locale == 'en-us' ) # FIXME: Hack for Rails 2.0
       unless locale.nil?
         GettextLocalize::set_locale(locale)
         true
