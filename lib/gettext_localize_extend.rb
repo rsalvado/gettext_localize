@@ -160,39 +160,8 @@ class DateTime
       :long => s_("datetime|long|%B %e, %Y"),
     }
   end
+  include GettextLocalize::TimeMethods
+  alias :to_s_nolocale :to_s
+  alias :to_s :to_s_locale
 end
 
-module ActionView::Helpers::DateHelper
-
-  alias :select_month_nolocale :select_month
-
-  # overwrite to set the monthnames in current locale
-  # TODO: Look for a better way to do this
-  
-  def select_month(date, options = {})
-    val = date ? (date.kind_of?(Fixnum) ? date : date.month) : ''
-    if options[:use_hidden]
-      hidden_html(options[:field_name] || 'month', val, options)
-    else
-      month_options = []
-      month_names = options[:use_month_names] || (options[:use_short_month] ? GettextLocalize::abbr_monthnames : GettextLocalize::monthnames)
-      month_names.unshift(nil) if month_names.size < 13
-      1.upto(12) do |month_number|
-        month_name = if options[:use_month_numbers]
-          month_number
-        elsif options[:add_month_numbers]
-          month_number.to_s + ' - ' + month_names[month_number]
-        else
-          month_names[month_number]
-        end
-  
-        month_options << ((val == month_number) ?
-          %(<option value="#{month_number}" selected="selected">#{month_name}</option>\n) :
-          %(<option value="#{month_number}">#{month_name}</option>\n)
-        )
-      end
-      select_html(options[:field_name] || 'month', month_options, options)
-    end
-  end
-  
-end

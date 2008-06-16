@@ -16,7 +16,6 @@ class GettextLocalizeTest < Test::Unit::TestCase
     assert_equal app_dir, GettextLocalize.app_name
     GettextLocalize.app_name = 'app'
     assert_equal 'app', GettextLocalize.app_name
-    assert_equal 'app 1.0.0', GettextLocalize.app_name_version
     GettextLocalize.app_version = '3.2.5'
     assert_equal '3.2.5', GettextLocalize.app_version
     assert_equal 'app 3.2.5', GettextLocalize.app_name_version

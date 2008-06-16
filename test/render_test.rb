@@ -30,6 +30,7 @@ class RenderControllerTest < Test::Unit::TestCase
   def set_controller(klass=nil)
     klass = RenderController if klass.nil?
     @controller = klass.new
+    @controller.set_default_locale("ca_ES")
     @request = ActionController::TestRequest.new
     @response = ActionController::TestResponse.new
   end
@@ -92,7 +93,8 @@ EOF
 
   def test_controler_should_overwrite_defaults
     set_controller RenderControllerBeforeDefaultLocale
-    GettextLocalize.default_locale = "ca-es"
+    #GettextLocalize.default_locale = "ca-es"
+    GettextLocalize::set_locale("ca-es")
     get :test
     assert_view_in_usa
 
@@ -211,7 +213,7 @@ EOF
     session[:l] = "es"
     get :test
     assert_view_in_spa
-    session[:l] = ""
+    session[:l] = "en-us"
     get :test
     assert_view_in_usa
     session["l"] = ""

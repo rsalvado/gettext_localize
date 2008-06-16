@@ -1,6 +1,8 @@
 
 module GettextLocalize
 
+  RAILS_MAJOR, RAILS_MINOR, RAILS_TINY = RAILS_GEM_VERSION.split(".").map(&:to_i)
+
   module Helper
   end
 
@@ -23,7 +25,8 @@ module GettextLocalize
     # loads default locale in every controller
     # can be overriden by calling set_locale
     def set_default_locale(locale=nil)
-      locale = GettextLocalize::locale if ( locale.nil? || locale == 'en-us' ) # FIXME: Hack for Rails 2.0
+      #locale = GettextLocalize::locale if ( locale.nil? || locale == 'en-us' ) # FIXME: Hack for Rails 2.0
+      locale = GettextLocalize::locale if locale.nil?
       unless locale.nil?
         GettextLocalize::set_locale(locale)
         true
@@ -220,9 +223,25 @@ end
 
 # ActionView extensions
 module ActionView
+
+  # FIXME: Temporary Hack to make gettext work with rails 2.1
+  # See: http://zargony.com/2008/02/12/edge-rails-and-gettext-undefined-method-file_exists-nomethoderror
+  class Base
+    delegate :file_exists?, :to => :finder unless respond_to?(:file_exists?)
+  end
+
    module Helpers
     # DateHelper extensions
     module DateHelper
+
+      def with_rails_version_call(method_name, *args)
+        if (GettextLocalize::RAILS_MAJOR >= 2 && GettextLocalize::RAILS_MINOR >= 1)
+          send(method_name, *args)
+        else
+          send(method_name, *args[0..-2])
+        end
+      end
+
       alias_method :orig_date_select, :date_select
 
       # modify date_select to insert date order specified on
@@ -236,9 +255,9 @@ module ActionView
 
       # modify select_date to apply order specified on
       # countries.yml file.
-      def select_date(date = Date.today, options = {})
+      def select_date(date = Date.today, options = {}, html_options = {})
         options.reverse_merge!(GettextLocalize::date_order) unless options.include? :order
-        orig_select_date(date, options)
+        with_rails_version_call(:orig_select_date, date, options, html_options)
       end
 
       alias_method :orig_datetime_select, :datetime_select
@@ -256,9 +275,16 @@ module ActionView
 
       # modify select_datetime to apply order specified on
       # countries.yml file.
-      def select_datetime(datetime = Time.now, options = {})
+      def select_datetime(datetime = Time.now, options = {}, html_options = {})
         options.reverse_merge!(GettextLocalize::date_order) unless options.include? :order
-        orig_select_datetime(datetime, options)
+        with_rails_version_call(:orig_select_datetime, datetime, options, html_options)
+      end
+
+      alias :select_month_nolocale :select_month
+
+      def select_month(date, options = {}, html_options = {})
+        options[:use_month_names] = (options[:use_short_month] ? GettextLocalize::abbr_monthnames : GettextLocalize::monthnames) unless options[:use_month_names]
+        with_rails_version_call(:select_month_nolocale, date, options, html_options)
       end
 
     end
@@ -266,9 +292,9 @@ module ActionView
     class InstanceTag
       alias_method :orig_to_datetime_select_tag , :to_datetime_select_tag
     
-      def to_datetime_select_tag(options = {})
+      def to_datetime_select_tag(options = {}, html_options = {})
         options.reverse_merge!(GettextLocalize::date_order) unless options.include? :order
-        orig_to_datetime_select_tag(options)
+        with_rails_version_call(:orig_to_datetime_select_tag, options, html_options)
       end
     end
 
