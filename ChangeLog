@@ -1,6 +1,12 @@
+Version 0.4.5 17/06/2008
+----
+
+		- Updated for Rails 2.1 (thanks to Pascal Laplante)
+		- Fixed tests
+
 Version 0.4.4 30/05/2008
 ----
-		- Added rpdf extension to the list of extensiosn files be parsed
+		- Added rpdf extension to the list of extensions files be parsed
 		- Fixed small typo in spanish translation (thanks to Arnau Sanchez and Guillem de Castro)
 		- Fixed memory leak (Jordi Beltran)
 		- Fixed small bug in the plugin localization system

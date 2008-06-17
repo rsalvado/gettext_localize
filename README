@@ -7,8 +7,8 @@ RubyForge_Project_Page[http://rubyforge.org/projects/rateableplugin/gettextlocal
 Any questions/comments can be addressed to Ramon Salvadó <rsalvado@gnuine.com>
 
 This plugin is intended to help you localize your rails app using Gettext, it doesn't try to cover localization of models.
-It works with Rails 2.0
-and has been tested with the following languages: catalan, spanish, english.
+It works with Rails 2.0 and 2.1
+and has been tested with the following languages: catalan, spanish, english, french, deutsch.
 
 == Installation
 

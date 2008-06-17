@@ -226,8 +226,10 @@ module ActionView
 
   # FIXME: Temporary Hack to make gettext work with rails 2.1
   # See: http://zargony.com/2008/02/12/edge-rails-and-gettext-undefined-method-file_exists-nomethoderror
-  class Base
-    delegate :file_exists?, :to => :finder unless respond_to?(:file_exists?)
+  if (GettextLocalize::RAILS_MAJOR >= 2 && GettextLocalize::RAILS_MINOR >= 1)
+    class Base
+      delegate :file_exists?, :to => :finder unless respond_to?(:file_exists?)
+    end
   end
 
    module Helpers
