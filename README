@@ -22,7 +22,7 @@ To install the plugin:
 
 == Features
 
-- works with rails 2.0 and loads the correct ruby-gettext
+- works with rails 2.0,2.1 and loads the correct ruby-gettext
 - loads ruby-gettext with meaningful defaults, that can be overwritten at different levels
 - simplifies translation with rake tasks
 - set the locale in the controllers by query param, session, cookie or browser header
