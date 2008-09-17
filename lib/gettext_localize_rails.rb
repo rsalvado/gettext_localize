@@ -248,9 +248,9 @@ module ActionView
 
       # modify date_select to insert date order specified on
       # countries.yml file.
-      def date_select(object_name, method, options = {})
+      def date_select(object_name, method, options = {}, html_options = {})
         options.reverse_merge!(GettextLocalize::date_order) unless options.include? :order
-        orig_date_select(object_name, method, options)  #:order => [:day,:month,:year])# options)
+        with_rails_version_call(:orig_date_select, object_name, method, options, html_options)  #:order => [:day,:month,:year])# options)
       end
 
       alias_method :orig_select_date, :select_date
@@ -266,11 +266,11 @@ module ActionView
 
       # modify datetime_select to insert date order specified on
       # countries.yml file.
-      def datetime_select(object_name, method, options = {})
+      def datetime_select(object_name, method, options = {}, html_options = {})
         if GettextLocalize::date_order.respond_to? :merge
           options.reverse_merge!(GettextLocalize::date_order) unless options.include? :order
         end
-        orig_datetime_select(object_name, method, options)
+        with_rails_version_call(:orig_datetime_select, object_name, method, options, html_options)
       end
 
       alias_method :orig_select_datetime, :select_datetime

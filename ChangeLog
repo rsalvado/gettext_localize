@@ -1,3 +1,8 @@
+Version 0.4.6 17/09/2008
+----
+
+		- Fixes date_select datetime_select for Rails 2.1.1 (thanks to Thilo)
+
 Version 0.4.5 17/06/2008
 ----
 
