@@ -1,3 +1,8 @@
+Version 0.4.7 13/10/2008
+----
+
+		- Fixes has_locale bug when handling invalid locale strings (thanks to grosser)
+
 Version 0.4.6 17/09/2008
 ----
 
