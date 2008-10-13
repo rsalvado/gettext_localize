@@ -192,6 +192,7 @@ module GettextLocalize
   # is translated, by checking the load_paths
   # FIXME: check if Gettext has this
   def self.has_locale?(locale)
+    return false unless locale.match(/\A[a-zA-Z\_-]+\Z/)
     locale = self.format_locale(locale)
     return true if locale=='C' or locale.split("_")[0] == 'en' # default locale to translate
     mos = [File.join(self.get_locale_path,locale,"LC_MESSAGES",self.get_textdomain+".mo")]
